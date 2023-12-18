@@ -69,6 +69,11 @@ button:hover {
 	box-shadow: 0px 0px 6px var(--fg-color);
 }
 
+.hidden {
+	display: none;
+	visibility: hidden;
+}
+
 .item {
 	padding: 0.5rem;
 	border-bottom: 1px dashed var(--fg-color);

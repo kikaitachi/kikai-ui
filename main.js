@@ -12,14 +12,30 @@ userElement.onblur = () => {
 
 const passwordElement = document.getElementById("password");
 
+const itemConnect = document.getElementById("itemConnect");
+const itemDisconnect = document.getElementById("itemDisconnect");
+const connectionInfo = document.getElementById("connectionInfo");
+
 const connect = () => {
 	const url = urlElement.value;
 	const user = userElement.value;
 	const password = passwordElement.value;
 	const protocol = location.protocol == "http:" ? "ws" : "wss";
 	const ws = new WebSocket(`${protocol}://${user}:${password}@${url}`);
-	ws.onclose = () => {
-		setTimeout(connect, 2000);
+	ws.onopen = () => {
+		connectionInfo.innerHTML = `Connected to ${protocol}://${user}@${url}`;
+		itemConnect.classList.add("hidden");
+		itemDisconnect.classList.remove("hidden");
+	}
+	ws.onclose = (event) => {
+		itemConnect.classList.remove("hidden");
+		itemDisconnect.classList.add("hidden");
+		if (event.code != 3000) {
+			setTimeout(connect, 2000);
+		}
+	}
+	document.getElementById("disconnect").onclick = () => {
+		ws.close(3000, "user clicked disconnect");
 	}
 };
 

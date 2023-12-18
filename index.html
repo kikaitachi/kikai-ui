@@ -9,7 +9,7 @@
 		<meta name="description" content="Web interface to control robots.">
 	</head>
 	<body>
-		<div class="item">
+		<div id="itemConnect" class="item">
 			<h1>Robot web interface</h1>
 			<table>
 				<tr>
@@ -32,6 +32,10 @@
 				</tr>
 			</table>
 			<button id="connect">Connect</button>
+		</div>
+		<div id="itemDisconnect" class="item hidden">
+			<span id="connectionInfo"></span>
+			<button id="disconnect">Disconnect</button>
 		</div>
 		<div class="item" style="font-size: 50%;">
 			Credits:
