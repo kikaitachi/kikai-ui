@@ -1,11 +1,13 @@
 @font-face {
 	font-family: IntelOneMono-Light;
 	src: url("fonts/IntelOneMono-Light.woff2") format("woff");
+	font-display: swap;
 }
 
 @font-face {
 	font-family: IntelOneMono-Bold;
 	src: url("fonts/IntelOneMono-Bold.woff2") format("woff");
+	font-display: swap;
 }
 
 :root {
