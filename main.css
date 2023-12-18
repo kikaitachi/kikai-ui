@@ -35,7 +35,13 @@ input:focus {
 button {
 	border-radius: 0.5rem;
 	border: none;
+	text-transform: uppercase;
 	background-image: linear-gradient(var(--fg-color), var(--bg-color));
+	box-shadow: 0px 0px 3px var(--fg-color);
+}
+
+button:hover {
+	box-shadow: 0px 0px 6px var(--fg-color);
 }
 
 .item {
