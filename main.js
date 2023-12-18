@@ -16,6 +16,8 @@ const itemConnect = document.getElementById("itemConnect");
 const itemDisconnect = document.getElementById("itemDisconnect");
 const connectionInfo = document.getElementById("connectionInfo");
 
+let reconnect = true;
+
 const connect = () => {
 	const url = urlElement.value;
 	const user = userElement.value;
@@ -26,16 +28,19 @@ const connect = () => {
 		connectionInfo.innerHTML = `Connected to ${protocol}://${user}@${url}`;
 		itemConnect.classList.add("hidden");
 		itemDisconnect.classList.remove("hidden");
+		reconnect = true;
 	}
 	ws.onclose = (event) => {
-		itemConnect.classList.remove("hidden");
-		itemDisconnect.classList.add("hidden");
-		if (event.code != 3000) {
+		if (reconnect) {
+			connectionInfo.innerHTML = `Reconnecting to ${protocol}://${user}@${url}`;
 			setTimeout(connect, 2000);
 		}
 	}
 	document.getElementById("disconnect").onclick = () => {
-		ws.close(3000, "user clicked disconnect");
+		reconnect = false;
+		ws.close();
+		itemConnect.classList.remove("hidden");
+		itemDisconnect.classList.add("hidden");
 	}
 };
 
