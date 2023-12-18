@@ -3,6 +3,11 @@
 	src: url("fonts/IntelOneMono-Light.woff2") format("woff");
 }
 
+@font-face {
+	font-family: IntelOneMono-Bold;
+	src: url("fonts/IntelOneMono-Bold.woff2") format("woff");
+}
+
 :root {
 	--text-color: silver;
 	--bg-color: #25292e;
@@ -22,6 +27,18 @@ body, html {
   font-size: 1rem;
 }
 
+h1 {
+	font-size: 1rem;
+	font-family: IntelOneMono-Bold;
+	margin: 0;
+}
+
+table {
+	border-spacing: 0;
+	border-collapse: collapse;
+	margin: 0.5rem 0;
+}
+
 input {
 	background: var(--fg-color);
 	border: none;
@@ -38,6 +55,7 @@ button {
 	text-transform: uppercase;
 	background-image: linear-gradient(var(--fg-color), var(--bg-color));
 	box-shadow: 0px 0px 3px var(--fg-color);
+	padding: 0 0.5rem
 }
 
 button:hover {
@@ -45,6 +63,6 @@ button:hover {
 }
 
 .item {
-	padding: 0.25rem;
+	padding: 0.5rem;
 	border-bottom: 1px dashed var(--fg-color);
 }
