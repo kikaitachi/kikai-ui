@@ -16,7 +16,7 @@ const connect = () => {
 	const url = urlElement.value;
 	const user = userElement.value;
 	const password = passwordElement.value;
-	const protocol = localtion.protocol == "http:" ? "ws" : "wss";
+	const protocol = location.protocol == "http:" ? "ws" : "wss";
 	const ws = new WebSocket(`${protocol}://${user}:${password}@${url}`);
 	ws.onclose = () => {
 		setTimeout(connect, 2000);
